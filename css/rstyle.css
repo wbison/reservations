@@ -1,0 +1,552 @@
+﻿@charset "UTF-8";
+/* CSS Document */
+
+.reserver {
+	-webkit-appearance: none;
+	/*overflow:hidden;*/
+	position:relative;
+	font-family: arial,tahoma,sans-serif;
+    font-size: 14px;
+	width: 490px;
+	padding: 0;
+	margin: 10px;
+}
+
+.drop_active {
+	display:inline-block;
+	float:left;
+	background-image: url("../images/pijldown.png");
+	background-repeat: no-repeat;
+    display: inline-block;
+    height: 26px;
+    margin: 0px;
+    padding: 0;
+    width: 26px;
+	background-position: 0px 0px;
+}
+.drop_inactive {
+	display:inline-block;
+	float:left;
+	background-image: url("../images/pijldown.png");
+	background-repeat: no-repeat;
+    display: inline-block;
+    height: 26px;
+    margin: 0px;
+    padding: 0;
+    width: 26px;
+	background-position: -26px 0px;
+}
+.drop_disabled {
+	display:inline-block;
+	float:left;
+	background-image: url("../images/pijldown.png");
+	background-repeat: no-repeat;
+    display: inline-block;
+    height: 26px;
+    margin: 0px;
+    padding: 0;
+    width: 26px;
+	background-position: -52px 0px;
+}
+
+.reservePart {
+	overflow:hidden;
+	}
+.opnieuwlink{
+	text-decoration:underline;
+	font-weight:bold;
+	color:#404040;
+}
+.opnieuwlink:hover{
+	text-decoration:underline;
+	font-weight:bold;
+	color:#606060;
+}
+.part_title_active {
+	cursor: pointer;
+	with: 490px;
+	height:26px;
+	background-color:#000000;
+	color:#FFFFFF;
+    margin: 0px;
+	display:block;
+	overflow:hidden;
+}
+.part_title_inactive {
+	cursor: pointer;
+	width: 490px;
+	height:26px;
+	background-color:#D9D9D9;
+	color:#FFFFFF;
+    margin: 0px;
+	display:block;
+	overflow:hidden;
+}
+.part_title_copy {
+	text-transform:uppercase;
+	text-decoration:none;
+	color:#FFFFFF;
+	font-weight:bold;
+	padding:0px;
+	line-height:26px;
+}
+
+.letop {
+	font-size:12px;
+	position:relative;
+	top:0px;
+	left:0px;
+	width:440px;
+	display:block;
+	float:left;
+	margin:5px 0px 0px 0px;
+	color:#8E0000;
+}
+.allpersons {
+	width:490px;
+	margin:0 0 10px;
+	padding:0;
+	float:left;
+}
+.personlist {
+	cursor: pointer;
+	text-align:center;
+	font-weight:bold;
+	color:#404040;
+	background-color:#D9D9D9;
+	width:38px;
+	height:26px;
+	list-style: none;
+	padding: 0;
+	margin: 2px 2px 0 0;
+	float: left;
+	border:none;
+	line-height:26px;
+	
+}
+.actief {
+	color:#BBBBBB;
+	background-color:#000000;
+}
+.inactief {
+	color:#404040;
+	background-color:#D9D9D9;
+}
+.part_content {
+	color:#404040;
+	position:relative;
+	width:464px;
+	overflow:hidden;
+	margin:0px 0px 0px 26px;
+	padding:10px 0 10px 0px;
+}
+*, * focus {
+	outline: none;
+}
+.tijdindex{
+	position:relative;
+	width:100px;
+	left:320px;
+	top:-26px;
+	text-transform:uppercase;
+	text-decoration:none;
+	color:#FFFFFF;
+	font-weight:bold;
+	padding:0px;
+	line-height:26px;
+}
+.mndSelect{
+	height:26px;
+	width:76px;
+	line-height:26px;
+	/*cursor: pointer;*/
+	text-align:center;
+	font-weight:bold;
+	background-color:#D9D9D9;
+	padding: 0;
+	margin: 2px 2px 0 0;
+}
+.mndSelect a{
+	text-decoration:none;
+	font-size:12px;
+	color:#404040;
+}
+.mndSelect a:hover{
+	text-decoration:underline;
+}
+.kv{
+	font-size:14px;
+	height:26px;
+	width:38px;
+	/*cursor: pointer;*/
+	text-align:center;
+	font-weight:bold;
+	color:#404040;
+	background-color:#EEEEEE;
+	padding: 0;
+	margin: 2px 2px 0 0;
+}
+.kvFilled{
+	cursor: pointer;
+	color:#404040;
+	background-color:#D9D9D9;
+}
+.kvBlocked{
+	cursor: default;
+	color:#512929;
+	background-color:#D00000;
+}
+.kvWarning{
+	cursor: pointer;
+	color:#544b3a;
+	background-color:#e1b558;
+}
+.kvDisabled{
+	cursor:default;
+	color:#D0D0D0;
+	background-color:#EEEEEE;
+}
+.kvSelected {
+	cursor:default;
+	height:26px;
+	width:38px;
+	color:#BBBBBB;
+	background-color:#000000;
+	border:none;
+}
+.kvActive{
+	cursor:pointer;
+	height:24px;
+	width:36px;
+	color:#404040;
+	border:#000000 1px solid;
+}
+.kvt{
+	font-size:12px;
+	color:#000;
+	text-transform:uppercase;
+	text-decoration:none;
+	font-weight:bold;
+	line-height:26px;
+}
+
+.kvh{
+	font-size:14px;
+	height:26px;
+	width:38px;
+	text-align:center;
+	font-weight:bold;
+	color:#404040;
+	background-color:#FFFFFF;
+	padding: 0;
+	margin: 2px 2px 0 0;
+}
+.kvh2{
+	font-size:14px;
+	height:26px;
+	width:38px;
+	text-align:left;
+	font-weight:bold;
+	color:#404040;
+}
+
+.kvs{
+	height:26px;
+	width:30px;
+}
+.kvtm{
+	cursor:pointer;
+	font-size:14px;
+	height:26px;
+	width:60px;
+	text-align:center;
+	font-weight:bold;
+	color:#404040;
+	background-color:#D9D9D9;
+	padding: 0;
+	margin: 2px 2px 0 0;
+}
+.kvtmSelected{
+	cursor:pointer;
+	font-size:14px;
+	height:26px;
+	width:60px;
+	text-align:center;
+	font-weight:bold;
+	color:#BBBBBB !important;
+	background-color:#000000 !important;
+	padding: 0;
+	margin: 2px 2px 0 0;
+}
+.kvtmDisabled{
+	cursor:default;
+	font-size:14px;
+	height:26px;
+	width:60px;
+	text-align:center;
+	font-weight:bold;
+	color:#EEEEEE;
+	background-color:#D0D0D0;
+	padding: 0;
+	margin: 2px 2px 0 0;
+}
+.isWarning{
+	color:#544b3a;
+	background-color:#e1b558;
+}
+.isBlocked{
+	cursor:default;
+	color:#512929;
+	background-color:#D00000;
+}
+.isDisabled{
+	color:#D0D0D0;
+	background-color:#EEEEEE;
+}
+
+.kalendercontainer {
+	margin:5px 0 0 5px;
+    font-size: 14px;
+	position:relative;
+	left:0px;
+	top:0px;
+	width:280px;
+	font-weight:bold;
+}
+.kalenderhead {
+	width:280px;
+	display:block;
+	color:#404040;
+	font-weight:bold;
+	line-height:26px;
+}
+.tijdcontainer {
+	position:relative;
+	left:295px;
+	top:0px;
+	width:100px;
+	line-height:26px;
+	width:145px;
+}
+.tijdtitle {
+	display:block;
+	color:#404040;
+	font-weight:bold;
+	line-height:26px;
+}
+.tijden {
+	cursor: pointer;
+	text-align:center;
+	font-weight:bold;
+	color:#404040;
+	background-color:#D9D9D9;
+	width:69px;
+	height:26px;
+	list-style: none;
+	padding: 0;
+	margin: 2px 2px 0 0;
+	border:none;
+	line-height:26px;
+	
+}
+.kalenderhead {
+	text-align:center;
+	font-weight:bold;
+	color:#404040;
+	background-color:#FFFFFF;
+	width:38px;
+	height:26px;
+	list-style: none;
+	padding: 0;
+	margin: 2px 2px 0 0;
+	float: left;
+	border:none;
+	line-height:26px;
+}
+.kalenderdag {
+	cursor: pointer;
+	text-align:center;
+	font-weight:bold;
+	color:#404040;
+	background-color:#D9D9D9;
+	width:38px;
+	height:26px;
+	list-style: none;
+	padding: 0;
+	margin: 2px 2px 0 0;
+	float: left;
+	border:none;
+	line-height:26px;
+	
+}
+.txt_single{
+	/*float:left;
+	display:inline;*/
+	font-weight:bold;
+	color:#404040;
+	position:relative;
+	width:230px;
+	left:0px;
+	top:0px;
+	margin:7px 0 7px 0;
+}
+.txt_single{
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-webkit-appearance: none;
+	outline: none;
+	border:none;
+	/*border:#8E0000 1px solid;*/
+	font-family: arial,tahoma,sans-serif;
+	font-weight:normal;
+    font-size: 14px;
+	margin:0px 0 6px 0;
+	padding:0 3px 0 6px;
+	background-color:#D9D9D9;
+	line-height:24px;
+	height:24px;
+	width:210px;
+}
+.persoon_table{
+	margin:5px 0 5px 0;
+	font-size:14px;
+	color:#404040;
+	font-weight:bold;
+	padding:0px;
+}
+.simpleTitle{
+	line-height:30px;
+}
+.invul_error{
+	border:#8E0000 1px solid;
+}
+.txt_noot{
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-webkit-appearance: none;
+	overflow: auto;
+	position:relative;
+	left:0px;
+	top:0px;
+	float:left;
+	padding:0 0px 0 6px;
+	margin:0px 0px 6px 0;
+	resize: none;
+	outline: none;
+	font-family: arial,tahoma,sans-serif;
+    font-size: 14px;
+	border:none;
+	background-color:#D9D9D9;
+	line-height:24px;
+	height:100px;
+	width:220px;
+}
+.verstuur_inactive{
+	position:relative;
+	left:0px;
+	top:0px;
+	outline: none;
+	padding:0;
+	border:none;
+	color:#FFFFFF;
+	background-color:#D9D9D9;
+	line-height:26px;
+	height:26px;
+	width:124px;
+}
+.verstuur_active{
+	position:relative;
+	left:0px;
+	top:0px;
+	outline: none;
+	padding:0;
+	border:none;
+	color:#FFFFFF;
+	background-color:#000000;
+	line-height:26px;
+	height:26px;
+	width:124px;
+}
+
+.timeErr{
+	margin:0;
+	padding:0;
+	position:absolute;
+	left:324px;
+	top:74px;
+	color:#8E0000;
+	height:196px;
+	width:138px;
+	border:#8E0000 1px solid;
+	overflow:hidden;
+}
+.fout_msg{
+	position:relative;
+	left:150px;
+	top:-26px;
+	color:#8E0000;
+	line-height:26px;
+	height:26px;
+	width:324px;
+}
+.verstuur_a{
+	color:#FFFFFF;
+	line-height:26px;
+	text-decoration:none;
+	font-family: arial,tahoma,sans-serif;
+	font-weight:bold;
+    font-size: 14px;
+}
+/*.drop_verstuur_active {
+	display:inline-block;
+	float:left;
+	background-image: url("./../img/pijldown.png");
+	background-repeat: no-repeat;
+    display: inline-block;
+    height: 26px;
+    margin: 0px;
+    padding: 0;
+    width: 26px;
+	background-position: 0px 0px;
+	overflow:hidden;
+}
+*/
+.drop_verstuur_inactive{
+	display:inline-block;
+	float:left;
+	background-image: url("../images/pijldown.png");
+	background-repeat: no-repeat;
+    display: inline-block;
+    height: 26px;
+    margin: 0px;
+    padding: 0;
+    width: 26px;
+	background-position: -26px 0px;
+	overflow:hidden;
+}
+
+.slot {
+	display: inline-block;
+	background: #d9d9d9;
+	margin: 1px;
+	padding: 10px;
+	cursor: hand;
+	color: black;
+	border: solid 1px white;
+}
+
+.selected {
+	border: solid 1px black;
+}
+
+.section_divider {
+	display: inline-block;
+	width: 10px;
+}
+
+.slot_container {
+	white-space: nowrap;
+	overflow-x: scroll;
+	width: 464px;
+	height: 44px;
+}
