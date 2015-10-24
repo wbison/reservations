@@ -39,9 +39,7 @@ var Nappkin = (function () {
                             var info = reservationObject.dates[day];
                             for(var s = 0; s < info.sections.length; s++) {
                                 var section = info.sections[s];
-                                if (!section.isClosed ) {
-                                    return false;
-                                }
+                                if (section.slots && section.slots.length) return false;
                             }
                             return true;
                         };
