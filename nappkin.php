@@ -66,7 +66,6 @@ class Nappkin extends WP_Widget {
 
 	private function html() {
 		?>
-        <script>var locationId = 193;</script>
 		<div class="reserver" name="rtool" id="rtool">
       <div class="reservePart">
           <div class="part_title_inactive" name="head_personen" id="head_personen">
