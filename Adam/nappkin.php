@@ -241,6 +241,7 @@ class Nappkin extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
+	    /*
 		if ( isset( $instance[ 'locationId' ] ) ) {
 			$locationId = $instance[ 'locationId' ];
 		}
@@ -253,6 +254,7 @@ class Nappkin extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id( 'locationId' ); ?>" name="<?php echo $this->get_field_name( 'locationId' ); ?>" type="text" value="<?php echo esc_attr( $locationId ); ?>">
 		</p>
 		<?php
+        */
 	}
 	/**
 	 * Sanitize widget form values as they are saved.

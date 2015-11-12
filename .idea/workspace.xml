@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fb755017-d7f9-49a0-bf55-b08c03531897" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Adam/js/nappkin.js" afterPath="$PROJECT_DIR$/Adam/js/nappkin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Adam/nappkin.php" afterPath="$PROJECT_DIR$/Adam/nappkin.php" />
     </list>
     <ignored path="Reservation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,10 +56,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nappkin.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nappkin.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Adam/js/nappkin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39823008">
+            <state vertical-scroll-proportion="-11.666667">
               <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding />
             </state>
@@ -78,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nappkin.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nappkin.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Adam/nappkin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="57.37037">
-              <caret line="121" column="94" selection-start-line="121" selection-start-column="94" selection-end-line="121" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.31731984">
+              <caret line="241" column="7" selection-start-line="241" selection-start-column="7" selection-end-line="241" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -153,11 +153,11 @@
         <option value="$PROJECT_DIR$/js/nappkin.js" />
         <option value="$PROJECT_DIR$/nappkin.php" />
         <option value="$PROJECT_DIR$/Adam/css/nappkin.css" />
-        <option value="$PROJECT_DIR$/Adam/nappkin.php" />
         <option value="$PROJECT_DIR$/css/nappkin.css" />
         <option value="$PROJECT_DIR$/Adam/js/nappkin_api.js" />
         <option value="$PROJECT_DIR$/js/nappkin_api.js" />
         <option value="$PROJECT_DIR$/Adam/js/nappkin.js" />
+        <option value="$PROJECT_DIR$/Adam/nappkin.php" />
       </list>
     </option>
   </component>
@@ -167,8 +167,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="253" />
-    <option name="y" value="158" />
+    <option name="x" value="274" />
+    <option name="y" value="61" />
     <option name="width" value="1690" />
     <option name="height" value="1353" />
   </component>
@@ -455,11 +455,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447328539466</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="endingnote, etc">
+      <created>1447329302176</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1447329302176</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="253" y="158" width="1690" height="1353" extended-state="0" />
+    <frame x="274" y="61" width="1690" height="1353" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24985021" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -518,7 +524,8 @@
     <MESSAGE value="separate temp branch for adam" />
     <MESSAGE value="css fixes, php etc" />
     <MESSAGE value="prod api server" />
-    <option name="LAST_COMMIT_MESSAGE" value="prod api server" />
+    <MESSAGE value="endingnote, etc" />
+    <option name="LAST_COMMIT_MESSAGE" value="endingnote, etc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -955,18 +962,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Adam/nappkin.php">
+    <entry file="file://$PROJECT_DIR$/Adam/js/nappkin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="57.37037">
-          <caret line="121" column="94" selection-start-line="121" selection-start-column="94" selection-end-line="121" selection-end-column="94" />
+        <state vertical-scroll-proportion="-11.666667">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Adam/js/nappkin.js">
+    <entry file="file://$PROJECT_DIR$/Adam/nappkin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39823008">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.31731984">
+          <caret line="241" column="7" selection-start-line="241" selection-start-column="7" selection-end-line="241" selection-end-column="7" />
           <folding />
         </state>
       </provider>
