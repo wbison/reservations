@@ -1,5 +1,8 @@
-var baseUrl = "http://cellarapp.apphb.com/api/v1/";
 var locationId = 993;
+var locationName = "Adam";
+var endingNote = "Bel ons op de dag van de reservering (uiterlijk 17:00) nog even op 020-2239852 ter bevestiging anders zijn we helaas genoodzaakt de tafel vrij te geven.";
+
+var baseUrl = "http://cellarapp.apphb.com/api/v1/";
 var fouten = false;
 var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 var aantalPersonen = 0;
@@ -504,20 +507,6 @@ jQuery(function ($) {
                 reserveResult
             );
 
-            //var reservationObject = {
-            //    name:  $('#nam').val(),
-            //    countGuests: aantalPersonen,
-            //    startsOn: reservedDay[0] + "-" + pad2(reservedDay[1] + 1) + "-" + pad2(reservedDay[2]) + "T" + $('#tijd').html() + ":00",
-            //    email: $('#eml').val(),
-            //    notes: $('#noot').val(),
-            //    mailingList: $('#infoaan').attr("checked"),
-            //    phone: $('#tel').val(),
-            //    locationId: locationId
-            //};
-            //$.jsonp({
-            //    url:baseUrl + "createreservation?callback=reserveResult",
-            //    data: reservationObject
-            //});
         }
         return false;
     }
@@ -544,15 +533,6 @@ jQuery(function ($) {
             $("#head_summary").addClass("part_title_active");
             $("#drop3").removeClass("drop_disabled");
             $("#drop3").addClass("drop_active");
-            $.post("http://www.restaurantadam.nl/adamres/confirmation.php", {
-                name: $('#nam').val(),
-                persons: $('#persons').html(),
-                startson: $('#datum').html() + " - " + $('#tijd').html(),
-                email: $('#eml').val(),
-                phone: $('#tel').val(),
-                mailing: $('#infoaan').attr("checked"),
-                note: $('#noot').val()
-            });
             $('#summary_content').html("Bovenstaande gegevens zijn verstuurd naar <strong>" + $('#eml').val() + "</strong><br>");
             if ($('#tel').val() != "") {
                 $('#summary_content').append("<br><strong>Telefoon:</strong><br>" + $('#tel').val());
@@ -564,9 +544,12 @@ jQuery(function ($) {
             if (!$('#infoaan').attr("checked")) {
                 nwsUpd = " geen";
             }
-            $('#summary_content').append("<br><br>U wilt" + nwsUpd + " nieuws ontvangen over restaurant Adam");
+            $('#summary_content').append("<br><br>U wilt" + nwsUpd + " nieuws ontvangen over " + locationName);
             $('#summary_content').append("<br><br><a href='index.html' target='_self' class='opnieuwlink'>Klik hier</a> als u een nieuwe reservering wilt maken");
 
+            if (endingNote) {
+                $('#summary_content').append("<br><br>" + endingNote);
+            }
         }
     }
     function enablePersoon() {
