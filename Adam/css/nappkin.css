@@ -83,6 +83,7 @@
 	display:block;
 	overflow:hidden;
 }
+
 .part_title_copy {
 	text-transform:uppercase;
 	text-decoration:none;
@@ -90,7 +91,9 @@
 	font-weight:bold;
 	padding:0px;
 	line-height:26px;
+	border: 0 !important;
 }
+
 
 .letop {
 	font-size:12px;
@@ -158,7 +161,7 @@
 }
 .mndSelect{
 	height:26px;
-	width:76px;
+	/*width:76px;*/
 	line-height:26px;
 	/*cursor: pointer;*/
 	text-align:center;
@@ -314,7 +317,7 @@
 	position:relative;
 	left:0px;
 	top:0px;
-	width:280px;
+	/*width:280px;*/
 	font-weight:bold;
 }
 .kalenderhead {
@@ -328,9 +331,9 @@
 	position:relative;
 	left:295px;
 	top:0px;
-	width:100px;
+	/*width:100px;*/
 	line-height:26px;
-	width:145px;
+	/*width:145px;*/
 }
 .tijdtitle {
 	display:block;
@@ -500,6 +503,7 @@
 	font-family: arial,tahoma,sans-serif;
 	font-weight:bold;
     font-size: 14px;
+	border: 0 !important
 }
 /*.drop_verstuur_active {
 	display:inline-block;

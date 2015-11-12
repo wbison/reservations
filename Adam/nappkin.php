@@ -2,7 +2,7 @@
 /*
 Plugin Name: Nappkin
 Plugin URI: http://www.nappkin.nl
-Description: Nappkin
+Description: Nappkin plugin voor Restaurant Adam
 Author: Nappkin
 Version: 1.0
 Author URI: http://www.nappkin.nl
@@ -55,12 +55,14 @@ class Nappkin extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
+    /*
      	echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		echo __( 'Hello, World!', 'text_domain' );
 		echo $args['after_widget'];
+	*/
 		$this->html();
 	}
 
@@ -93,7 +95,7 @@ class Nappkin extends WP_Widget {
                     <table width="464" border="0" cellspacing="2" cellpadding="0">
                           <tr class="kvt">
                             <td colspan="2" align="left" class="mndSelect"><a href="#" name="maandprev" id="maandprev">&laquo; Eerder</a></td>
-                            <td colspan="3" align="center"><span class="mdnNaam" name="maandnaam" id="maandnaam">MAAND</span></td>
+                            <td colspan="3" align="center"><div class="mndNaam" name="maandnaam" id="maandnaam">MAAND</span></td>
                             <td colspan="2" align="right" class="mndSelect"><a href="#" name="maandnext" id="maandnext">Later &raquo;</a></td>
                           </tr>
                           <tr class="kvh">

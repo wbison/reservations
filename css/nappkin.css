@@ -6,7 +6,7 @@
 	/*overflow:hidden;*/
 	position:relative;
 	font-family: arial,tahoma,sans-serif;
-    font-size: 14px;
+	font-size: 14px;
 	/*width: 490px;*/
 	padding: 0;
 	margin: 10px;
@@ -17,11 +17,11 @@
 	float:left;
 	background-image: url("../images/pijldown.png");
 	background-repeat: no-repeat;
-    display: inline-block;
-    height: 26px;
-    margin: 0px;
-    padding: 0;
-    width: 26px;
+	display: inline-block;
+	height: 26px;
+	margin: 0px;
+	padding: 0;
+	width: 26px;
 	background-position: 0px 0px;
 }
 .drop_inactive {
@@ -29,11 +29,11 @@
 	float:left;
 	background-image: url("../images/pijldown.png");
 	background-repeat: no-repeat;
-    display: inline-block;
-    height: 26px;
-    margin: 0px;
-    padding: 0;
-    width: 26px;
+	display: inline-block;
+	height: 26px;
+	margin: 0px;
+	padding: 0;
+	width: 26px;
 	background-position: -26px 0px;
 }
 .drop_disabled {
@@ -41,17 +41,17 @@
 	float:left;
 	background-image: url("../images/pijldown.png");
 	background-repeat: no-repeat;
-    display: inline-block;
-    height: 26px;
-    margin: 0px;
-    padding: 0;
-    width: 26px;
+	display: inline-block;
+	height: 26px;
+	margin: 0px;
+	padding: 0;
+	width: 26px;
 	background-position: -52px 0px;
 }
 
 .reservePart {
 	overflow:hidden;
-	}
+}
 .opnieuwlink{
 	text-decoration:underline;
 	font-weight:bold;
@@ -68,7 +68,7 @@
 	height:26px;
 	background-color:#000000;
 	color:#FFFFFF;
-    margin: 0px;
+	margin: 0px;
 	display:block;
 	overflow:hidden;
 }
@@ -79,10 +79,11 @@
 	height:26px;
 	background-color:#D9D9D9;
 	color:#FFFFFF;
-    margin: 0px;
+	margin: 0px;
 	display:block;
 	overflow:hidden;
 }
+
 .part_title_copy {
 	text-transform:uppercase;
 	text-decoration:none;
@@ -90,7 +91,9 @@
 	font-weight:bold;
 	padding:0px;
 	line-height:26px;
+	border: 0 !important;
 }
+
 
 .letop {
 	font-size:12px;
@@ -123,7 +126,7 @@
 	float: left;
 	border:none;
 	line-height:26px;
-	
+
 }
 .actief {
 	color:#BBBBBB;
@@ -158,7 +161,7 @@
 }
 .mndSelect{
 	height:26px;
-	width:76px;
+	/*width:76px;*/
 	line-height:26px;
 	/*cursor: pointer;*/
 	text-align:center;
@@ -310,11 +313,11 @@
 
 .kalendercontainer {
 	margin:5px 0 0 5px;
-    font-size: 14px;
+	font-size: 14px;
 	position:relative;
 	left:0px;
 	top:0px;
-	width:280px;
+	/*width:280px;*/
 	font-weight:bold;
 }
 .kalenderhead {
@@ -328,9 +331,9 @@
 	position:relative;
 	left:295px;
 	top:0px;
-	width:100px;
+	/*width:100px;*/
 	line-height:26px;
-	width:145px;
+	/*width:145px;*/
 }
 .tijdtitle {
 	display:block;
@@ -351,7 +354,7 @@
 	margin: 2px 2px 0 0;
 	border:none;
 	line-height:26px;
-	
+
 }
 .kalenderhead {
 	text-align:center;
@@ -381,7 +384,7 @@
 	float: left;
 	border:none;
 	line-height:26px;
-	
+
 }
 .txt_single{
 	/*float:left;
@@ -403,7 +406,7 @@
 	/*border:#8E0000 1px solid;*/
 	font-family: arial,tahoma,sans-serif;
 	font-weight:normal;
-    font-size: 14px;
+	font-size: 14px;
 	margin:0px 0 6px 0;
 	padding:0 3px 0 6px;
 	background-color:#D9D9D9;
@@ -438,7 +441,7 @@
 	resize: none;
 	outline: none;
 	font-family: arial,tahoma,sans-serif;
-    font-size: 14px;
+	font-size: 14px;
 	border:none;
 	background-color:#D9D9D9;
 	line-height:24px;
@@ -499,7 +502,8 @@
 	text-decoration:none;
 	font-family: arial,tahoma,sans-serif;
 	font-weight:bold;
-    font-size: 14px;
+	font-size: 14px;
+	border: 0 !important
 }
 /*.drop_verstuur_active {
 	display:inline-block;
@@ -520,11 +524,11 @@
 	float:left;
 	background-image: url("../images/pijldown.png");
 	background-repeat: no-repeat;
-    display: inline-block;
-    height: 26px;
-    margin: 0px;
-    padding: 0;
-    width: 26px;
+	display: inline-block;
+	height: 26px;
+	margin: 0px;
+	padding: 0;
+	width: 26px;
 	background-position: -26px 0px;
 	overflow:hidden;
 }
