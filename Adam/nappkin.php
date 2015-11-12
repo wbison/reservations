@@ -2,7 +2,7 @@
 /*
 Plugin Name: Nappkin
 Plugin URI: http://www.nappkin.nl
-Description: Nappkin plugin voor Restaurant Adam
+Description: Nappkin reservering plugin
 Author: Nappkin
 Version: 1.0
 Author URI: http://www.nappkin.nl
@@ -29,6 +29,17 @@ class Nappkin extends WP_Widget {
 			array( 'description' => __( 'Nappkin reservation widget', 'text_domain' ), ) // Args
 		);
 
+	}
+	/**
+	 * Front-end display of widget.
+	 *
+	 * @see WP_Widget::widget()
+	 *
+	 * @param array $args     Widget arguments.
+	 * @param array $instance Saved values from database.
+	 */
+	public function widget( $args, $instance ) {
+
         wp_enqueue_script(
                'nappkin_api',
                plugins_url( 'js/nappkin_api.js', __FILE__ ),
@@ -42,19 +53,14 @@ class Nappkin extends WP_Widget {
          array('jquery'),
          false,
          true
-     );
+        );
+        $vars = array(
+            'locationId'    => $instance[ 'locationId' ],
+            'locationName'  => $instance[ 'locationName' ],
+            'endingNote'    => $instance[ 'endingNote' ]
+            );
+        wp_localize_script( 'nappkin', 'wpSettings', $vars );
 		wp_enqueue_style('nappkin_css', plugins_url('css/nappkin.css',__FILE__ ));
-	}
-	/**
-	 * Front-end display of widget.
-	 *
-	 * @see WP_Widget::widget()
-	 *
-	 * @param array $args     Widget arguments.
-	 * @param array $instance Saved values from database.
-	 */
-	public function widget( $args, $instance ) {
-
     /*
      	echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
@@ -248,14 +254,25 @@ class Nappkin extends WP_Widget {
 		else {
 			$locationId = __( 'Location', 'text_domain' );
 		}
+		*/
+
+        $locationId     = $instance[ 'locationId' ];
+        $locationName   = $instance[ 'locationName' ];
+        $endingNote     = $instance[ 'endingNote' ];
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'locationId' ); ?>"><?php _e( 'Location:' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'locationId' ); ?>"><?php _e( 'Nappkin locationId:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'locationId' ); ?>" name="<?php echo $this->get_field_name( 'locationId' ); ?>" type="text" value="<?php echo esc_attr( $locationId ); ?>">
+
+			<label for="<?php echo $this->get_field_id( 'locationName' ); ?>"><?php _e( 'Naam restaurant:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'locationName' ); ?>" name="<?php echo $this->get_field_name( 'locationName' ); ?>" type="text" value="<?php echo esc_attr( $locationName ); ?>">
+
+			<label for="<?php echo $this->get_field_id( 'endingNote' ); ?>"><?php _e( 'Bericht na verzenden reservering (optioneel)' ); ?></label>
+			<textarea class="widefat" id="<?php echo $this->get_field_id( 'endingNote' ); ?>" name="<?php echo $this->get_field_name( 'endingNote' ); ?>"><?php echo esc_attr( $endingNote ); ?></textarea>
 		</p>
 		<?php
-        */
 	}
+
 	/**
 	 * Sanitize widget form values as they are saved.
 	 *
@@ -268,7 +285,9 @@ class Nappkin extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['locationId'] = ( ! empty( $new_instance['locationId'] ) ) ? strip_tags( $new_instance['locationId'] ) : '';
+		$instance['locationId']     = ( ! empty( $new_instance['locationId'] ) ) ? strip_tags( $new_instance['locationId'] ) : '';
+		$instance['locationName']   = ( ! empty( $new_instance['locationName'] ) ) ? strip_tags( $new_instance['locationName'] ) : '';
+		$instance['endingNote']     = ( ! empty( $new_instance['endingNote'] ) ) ? strip_tags( $new_instance['endingNote'] ) : '';
 		return $instance;
 	}
 } // class My_Widget

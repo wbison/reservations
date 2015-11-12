@@ -1,6 +1,6 @@
-var locationId = 993;
-var locationName = "Adam";
-var endingNote = "Bel ons op de dag van de reservering (uiterlijk 17:00) nog even op 020-2239852 ter bevestiging anders zijn we helaas genoodzaakt de tafel vrij te geven.";
+var locationId = wpSettings.locationId;
+var locationName = wpSettings.locationName;
+var endingNote = wpSettings.endingNote;
 
 var baseUrl = "http://cellarapp.apphb.com/api/v1/";
 var fouten = false;
