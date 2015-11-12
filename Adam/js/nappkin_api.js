@@ -4,7 +4,7 @@
 var Nappkin = (function () {
     function Nappkin(id) {
         this.locationId = parseInt(id);
-        this.api = "https://devcellarapp.apphb.com/api/v1/";
+        this.api = "https://cellarapp.apphb.com/api/v1/";
 
         this.getAvailabilityForMonth = function(date, success, failure) {
 
