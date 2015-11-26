@@ -9,12 +9,12 @@ Als je je website in eigen beheer hebt en volledige controle wilt over het uiter
 
 # WordPress
 
-Installatie instructie
+Installatie instructie:
 - installeer de plugin `amr shortcode any widget`
-Met deze plugin kun je widgets opnemen in een pagina
+Met deze plugin kun je widgets opnemen in een willekeurige pagina
 - maak een zip van WordPress/
-- in WordPress: `Add new plugin`
-- upload de zip
+- kies in WordPress: `Add new plugin`
+- upload de eerder gemaakte zip
 - ga naar `Appearance widgets`
 - sleep de Nappkin plugin naar het panel `Widgets for Shortcodes`
 - vul het id in dat je van Nappkin hebt ontvangen
@@ -43,7 +43,7 @@ getAvailablityForMonth(date, success, failure);
 createNewReservation(date, pax, name, email, phone, notes, language, success, failure)
 ```
 
-## getAvailablityForMonth
+### getAvailablityForMonth()
 
 Retourneert een object met daarin per datum en per section (lunch of diner) de beschikbaarheid per tijdslot.
 Het veld `available` bevat het aantal beschikbare plaatsen in het betreffende tijdslot.
@@ -92,6 +92,9 @@ Het veld `available` bevat het aantal beschikbare plaatsen in het betreffende ti
 }
 ```
 
-## createNewReservation
+### createNewReservation()
 
 createNewReservation(date, pax, name, email, phone, notes, language, success, failure)
+
+# Support
+Voor vragen en opmerkingen kan je contact opnemen met de servicedesk via `support@nappkin.nl`
