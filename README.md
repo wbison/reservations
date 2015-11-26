@@ -3,7 +3,7 @@ Je kunt op verschillende manieren op je eigen website reserveringen aanmaken in 
 
 Als je WordPress gebruikt kun je de Nappkin reserveer plugin installeren. Dat is de makkelijkste manier.
 
-Een andere manier is om de standaardimplementatie over te nemen op je website en die naar je eigen wensen aanpassen voor wat betreft kleur, lettertype etc.  
+Een eenvoudig alternatief is om de standaardimplementatie over te nemen op je website en die naar je eigen wensen aanpassen voor wat betreft kleur, lettertype etc.  
 
 Als je je website in eigen beheer hebt en volledige controle wilt over het uiterlijk van de reserveerpagina of -sectie dan kan je als basis het script `js/nappkin_api.js` gebruiken. 
 
