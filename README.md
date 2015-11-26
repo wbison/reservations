@@ -3,9 +3,28 @@ Je kunt op verschillende manieren op je eigen website reserveringen aanmaken in 
 
 Als je WordPress gebruikt kun je de Nappkin reserveer plugin installeren. Dat is de makkelijkste manier.
 
+Een andere manier is om de standaardimplementatie over te nemen op je website en die naar je eigen wensen aanpassen voor wat betreft kleur, lettertype etc.  
+
 Als je je website in eigen beheer hebt en volledige controle wilt over het uiterlijk van de reserveerpagina of -sectie dan kan je als basis het script `js/nappkin_api.js` gebruiken. 
 
-Tot slot kan je de voorbeeldimplementatie overnemen en die naar je wensen aanpassen, bijv qua kleur en lettertype.  
+# WordPress
+
+Installatie instructie
+- installeer de plugin `amr shortcode any widget`
+Met deze plugin kun je widgets opnemen in een pagina
+- maak een zip van WordPress/
+- in WordPress: `Add new plugin`
+- upload de zip
+- ga naar `Appearance widgets`
+- sleep de Nappkin plugin naar het panel `Widgets for Shortcodes`
+- vul het id in dat je van Nappkin hebt ontvangen
+- maak een nieuwe pagina aan en neem daarin de code `[do_widget nappkin]` op
+
+# Standaard
+
+index.html is een referentie implementatie die gebruik maakt van `js/nappkin_api.js`.
+Je kunt dit bestand en de inhoud van `js/` en `css/` overnemen op je website.
+
 
 # Api 
 Het script `js/nappkin_api.js` bevat de basiscode die nodig is voor de communicatie met de Nappkin server. Om de code te gebruiken instantieer je het Nappkin object als volgt:
@@ -17,11 +36,17 @@ var nappkin = new Nappkin(locationId);
 Het object `Nappkin` bevat twee functies:
 
 ```javascript
+// Opvragen beschikbaarheid per dag en per tijdslot over de maand van de  opgegeven datum
 getAvailablityForMonth(date, success, failure);
-createNewReservation(date, pax, name, email, phone, notes, language, success, failure) {
+
+//  Aanmaken nieuwe reservering
+createNewReservation(date, pax, name, email, phone, notes, language, success, failure)
 ```
 
 ## getAvailablityForMonth
+
+Retourneert een object met daarin per datum en per section (lunch of diner) de beschikbaarheid per tijdslot.
+Het veld `available` bevat het aantal beschikbare plaatsen in het betreffende tijdslot.
 
 ```
 {"result":
@@ -69,20 +94,4 @@ createNewReservation(date, pax, name, email, phone, notes, language, success, fa
 
 ## createNewReservation
 
-# Html 
-
-index.html is een referentie implementatie die gebruik maakt van `js/nappkin_api.js`.
-Je kunt dit bestand en de inhoud van `js/` en `css/` overnemen op je website.
-
-# WordPress
-Installatie instructie
-- installeer de plugin `amr shortcode any widget`
-Met deze plugin kun je widgets opnemen in een pagina
-- maak een zip van WordPress/
-- in WordPress: `Add new plugin`
-- upload de zip
-- ga naar `Appearance widgets`
-- sleep de Nappkin plugin naar het panel `Widgets for Shortcodes`
-[img]
-- vul het id in dat je van Nappkin hebt ontvangen
-- maak een nieuwe pagina aan en neem daarin de code `[do_widget nappkin]` op
+createNewReservation(date, pax, name, email, phone, notes, language, success, failure)
