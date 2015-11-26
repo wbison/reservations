@@ -193,26 +193,25 @@
 	padding: 0;
 	margin: 2px 2px 0 0;
 }
+
 .kvFilled{
 	cursor: pointer;
 	color:#404040;
 	background-color:#D9D9D9;
 }
+
 .kvBlocked{
 	cursor: default;
-	color:#512929;
+	color: white;
 	background-color:#D00000;
 }
-.kvWarning{
-	cursor: pointer;
-	color:#544b3a;
-	background-color:#e1b558;
-}
+
 .kvDisabled{
 	cursor:default;
 	color:#D0D0D0;
 	background-color:#EEEEEE;
 }
+
 .kvSelected {
 	cursor:default;
 	height:26px;
@@ -221,6 +220,7 @@
 	background-color:#000000;
 	border:none;
 }
+
 .kvActive{
 	cursor:pointer;
 	height:24px;
@@ -228,6 +228,7 @@
 	color:#404040;
 	border:#000000 1px solid;
 }
+
 .kvt{
 	font-size:12px;
 	color:#000;
@@ -535,11 +536,11 @@
 
 .slot {
 	display: inline-block;
-	background: #d9d9d9;
+	/*background: #d9d9d9;*/
 	margin: 1px;
 	padding: 10px;
-	cursor: hand;
-	color: black;
+	/*cursor: hand;*/
+	/*color: black;*/
 	border: solid 1px white;
 }
 
@@ -555,6 +556,6 @@
 .slot_container {
 	white-space: nowrap;
 	overflow-x: scroll;
-//	width: 464px;
+	/*width: 464px;*/
 	height: 44px;
 }

@@ -1,6 +1,3 @@
-/**
- * Created by wbison on 15-10-15.
- */
 var Nappkin = (function () {
     function Nappkin(id) {
         this.locationId = parseInt(id);
@@ -34,7 +31,7 @@ var Nappkin = (function () {
                 if (xhr.status === 200) {
                     if (success) {
                         var reservationObject = JSON.parse(xhr.responseText).result;
-                        reservationObject.isClosed = function(day) {
+                        reservationObject.isClosedOnDay = function(day) {
                             if (day >= reservationObject.dates.length) return true;
                             var info = reservationObject.dates[day];
                             for(var s = 0; s < info.sections.length; s++) {
@@ -43,7 +40,7 @@ var Nappkin = (function () {
                             }
                             return true;
                         };
-                        reservationObject.isAvailable = function(day, slot) {
+                        reservationObject.isAvailableOnDay = function(day, pax, slot) {
                             if (day >= reservationObject.dates.length) return false;
                             var info = reservationObject.dates[day];
                             for(var s = 0; s < info.sections.length; s++) {
@@ -51,7 +48,8 @@ var Nappkin = (function () {
                                 if (!section.isClosed) {
                                     for (var o = 0; o < section.slots.length; o++) {
                                         if (!slot || slot === section.slots[o].start) {
-                                            if (section.slots[o].available > 0) {
+                                            var available = section.slots[o].available;
+                                            if (available >= pax) {
                                                 return true;
                                             }
                                         }

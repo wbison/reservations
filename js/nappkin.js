@@ -1,7 +1,8 @@
-/**
- * Created by wbison on 06-11-15.
- */
- var restaurant_name = "restaurant MOS";
+
+ var locationId = 2;
+ var locationName = "Demo Bedrijf";
+
+ var nappkin = new Nappkin(locationId);
  var fouten = false;
  var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
  var aantalPersonen = 0;
@@ -17,60 +18,43 @@
  // convertion day offset mon-sun
  var today = [actYear, actMonth, actDay];
  var reservedDay = [0, 0, 0];
+ var reservedTime = {};
  var dofsTable = [5, 6, 0, 1, 2, 3, 4];
  var calSelect = 0;
-//    var tmeSelect = 0;
- var blCalendar = {};
- var warnValueLunch = 10;
- var warnValueDiner = 10;
-
- var blockValueLunch = 0;
- var blockValueDiner = 0;
-
- var dagSeatBlock = 15;
- var dagSeatWarn = 75;
+ var availabilityInfo = {};
 
  var maanden = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
  var wdagen = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"];
 
- jQuery(function ($) {
+ function daysInMonth(iMonth, iYear) {
+     return 32 - new Date(iYear, iMonth, 32).getDate();
+ }
+ function firstMonthDay(iMonth, iYear) {
+     var firstDay = new Date(iYear, iMonth, 1);
+     return firstDay.getDay();;
+ }
+ function setupMonth(mm) {
+     disableVerstuur();
+     if (mm < 0) {
+         actYear--;
+         actMonth = 11;
+     } else if (mm > 11) {
+         actYear++;
+         actMonth = 0;
+     } else {
+         actMonth = mm;
+     }
+     getjSon(fillCalendar);
+ }
+
+ jQuery(document).ready(function () {
      $('#groepletop').hide();
      $('#person_content').hide();
      $('#datum_content').hide();
      $('#foutmsg').hide();
      $('#persoon_content').hide();
      $('#summary_content').hide();
-     //$('#timeError').hide();
-
-     var nappkin = new Nappkin(locationId);
-
-     function daysInMonth(iMonth, iYear) {
-         return 32 - new Date(iYear, iMonth, 32).getDate();
-     }
-     function firstMonthDay(iMonth, iYear) {
-         var firstDay = new Date(iYear, iMonth, 1);
-         return firstDay.getDay();;
-     }
-     function setupMonth(mm) {
-         disableVerstuur();
-         if (mm < 0) {
-             actYear--;
-             actMonth = 11;
-         } else if (mm > 11) {
-             actYear++;
-             actMonth = 0;
-         } else {
-             actMonth = mm;
-         }
-         getjSon(fillCalendar);
-     }
-
-     for (i = 1; i <= 7; i++) {
-         $('#p' + i).click(function () {
-             klikPerson($(this).attr('id').substr(1, 2));
-             return false;
-         });
-     }
+     $('#slot_panel').hide();
 
      $("#verst").click(function (event) {
          event.preventDefault();
@@ -78,25 +62,31 @@
          verstuur();
      });
 
-     /*$('#nam').blur(function() {
-         checkPersonalia();
-     });
-     // GET RESERVATION DATA
-     */
      getjSon(enableStart);
+ });
+
+ function setupPaxPicker() {
+     var max = availabilityInfo.maxGroupSize || 6;
+     for(var i = 1; i <= max + 1; i++) {
+         var label = i <= max ? i : (i-1)+"+";
+         var node = $("<span class='personlist' name='p"+ i +"' id='p" + i + "'>" + label + "</span>");
+         node.click(function () {
+             klikPerson($(this).attr('id').substr(1, 2));
+             return false;
+         });
+         $('#pax_container').append(node);
+     }
+ }
 
  function getjSon(cBack) {
      var date = new Date(actYear, actMonth, 1);
      nappkin.getAvailabilityForMonth(date, function(s) {
-         blCalendar = s;
+         availabilityInfo = s;
          cBack(s)
      }, function(r) {
 
      });
  }
-//    function seatsAvail(dta) {
-//        enableStart();
-//    }
 
  function disableVerstuur() {
      //
@@ -140,9 +130,8 @@
          //$('#drop2').removeClass('drop_verstuur_active')
          //$('#drop2').addClass('drop_verstuur_inactive')
      }
-     //alert("data:"+$('#nam').val()+"\n"+$('#noot').val());
-
  }
+
  function setupDatum() {
      $('#head_datum').click(function () {
          var ivs = $('#datum_content').is(":visible");
@@ -156,6 +145,7 @@
 
      });
  }
+
  function setupPersoon() {
      $('#head_persoon').click(function () {
          var ivs = $('#persoon_content').is(":visible");
@@ -189,6 +179,7 @@
          $("#drop0").addClass("drop_active");
          $('#person_content').slideDown("fast");
          //
+        setupPaxPicker();
      }
  }
  function enableDate() {
@@ -200,12 +191,6 @@
          $("#drop1").addClass("drop_active");
          $('#datum_content').slideDown("fast");
 
-         for (i = 1; i <= 9; i++) {
-             $('#slot' + i).removeClass("isWarning");
-             $('#slot' + i).removeClass("isBlocked");
-             $('#slot' + i).addClass("isDisabled");
-         }
-
          $('#maandprev').click(function () {
              //event.preventDefault();
              setupMonth(actMonth - 1);
@@ -216,28 +201,6 @@
              setupMonth(actMonth + 1);
              return false;
          });
-//            // setup timeslot interaction
-//            for (i = 0; i <= 9; i++) {
-//                $('#slot' + i).click(function () {
-//                    if ((!$(this).hasClass('isBlocked')) & $(this).hasClass('kvtm') & (!$(this).hasClass('isDisabled'))) {
-//                        if (tmeSelect > 0) {
-//                            if (1 == 2) {
-//                                //restore warning flag
-//                            }
-//                            $('#slot' + tmeSelect).removeClass('kvtmSelected');
-//                        }
-//                        tmeSelect = ($(this).attr('id').substr(4, 1));
-//                        //alert("slot:"+tmeSelect);
-//                        $(this).addClass('kvtmSelected');
-//                        //alert($('#persoon_content').is(":visible"));
-//                        if ($('#persoon_content').is(":visible")) {
-//                            checkPersonalia();
-//                        }
-//                        var cpda = $(this).html();
-//                        tmeClicked(cpda);
-//                    }
-//                });
-//            }
          //setup day calendar interaction
          for (xx = 0; xx <= 41; xx++) {
              $('#dt' + xx).click(function () {
@@ -256,25 +219,15 @@
          setupDatum();
      }
  }
- function getSeatsTotal(dg) {
-     //
-     var seat = 0;
-     for (i = 0; i < blCalendar.result[dg].available.length; i++) {
-         if (blCalendar.result[dg].available[i].isClosed == false) {
-             seat += 1 * blCalendar.result[dg].available[i].count;
-         }
-     }
-     return seat;
- }
+
  function updateSlotSetting() {
-     //alert("update slots");
      // called after every day click
 
      $('#slotcontainer').empty();
 
      var day = reservedDay[2] - 1;
      var divRequired = false;
-     var info = blCalendar.dates[day];
+     var info = availabilityInfo.dates[day];
      selectedSlot = null;
      for(var s = 0; s < info.sections.length; s++) {
          var section = info.sections[s];
@@ -282,8 +235,12 @@
              for (var o = 0; o < section.slots.length; o++) {
                  var slot = section.slots[o];
                  var node = $("<div class='slot'>" + slot.start + "</div>");
-                 if (!slot.available) {
-                     node.addClass("isBlocked");
+                 if (slot.available < aantalPersonen) {
+                     node.addClass("kvBlocked");
+                     node.prop("title","Volgeboekt");
+                 }
+                 else {
+                     node.addClass("kvFilled");
                  }
                  if (!o && divRequired) {
                      $('#slotcontainer').append("<div class='section_divider'></div>");
@@ -301,7 +258,7 @@
                              checkPersonalia();
                          }
                          var cpda = $(selectedSlot).html();
-                         tmeClicked(cpda);
+                         timeClicked(cpda);
                      });
                  }
 
@@ -311,66 +268,26 @@
              }
          }
      }
-
-//        //travel through timeslots
-//        for (cl = 0; cl < blCalendar.result[(reservedDay[2] - 1)].available.length; cl++) {
-//            $('#slot' + (cl + 1)).removeClass("isDisabled");
-//            $('#slot' + (cl + 1)).removeClass("isBlocked");
-//            $('#slot' + (cl + 1)).removeClass("isWarning");
-//            //alert(String(blCalendar.result[(reservedDay[2]-1)].available[cl].count));
-//            var slotAvailabilityInfo = blCalendar.result[(reservedDay[2] - 1)].available[cl];
-//            if (slotAvailabilityInfo.isClosed) {
-//                // timeslot is closed
-//                $('#slot' + (cl + 1)).addClass("isDisabled");
-//                // reservation on time which is disabled?
-//            }
-//            else {
-//                // otherwise count available seats
-//                var avl = slotAvailabilityInfo.count;
-//                //alert(avl);
-//                var dinerflag = 0;
-//                if (cl < 3) {
-//                    // lunch limit
-//                    if (avl < blockValueLunch) {
-//                        dinerflag = 2;
-//                    } else if (avl < warnValueLunch) {
-//                        dinerflag = 1;
-//                    }
-//                } else {
-//                    // diner limit
-//                    if (avl < blockValueDiner) {
-//                        dinerflag = 2;
-//                    } else if (avl < warnValueDiner) {
-//                        dinerflag = 1;
-//                    }
-//                }
-//                if (dinerflag != 0) {
-//                    if (dinerflag == 2) {
-//                        $('#slot' + (cl + 1)).addClass("isBlocked");
-//                        // reservation on time which is full?
-//                        if ((cl + 1) == tmeSelect) {
-//                            $('#tijd').html("-");
-//                            $('#slot' + tmeSelect).removeClass('kvtmSelected');
-//                            tmeSelect = 0;
-//                        }
-//                    } else if (dinerflag == 1) {
-//                        $('#slot' + (cl + 1)).addClass("isWarning");
-//                    }
-//                }
-//            }
-//        }
  }
  function dayClicked(dd) {
      reservedDay = [actYear, actMonth, dd];
+     $('#slot_panel').show();
      updateSlotSetting();
      $('#datum').html(wdagen[new Date(actYear, actMonth, dd).getDay()] + " " + dd + " " + maanden[actMonth]);
      checkContinue();
  }
- function tmeClicked(dd) {
-     //reservedDay=[actYear,actMonth,dd];
+
+ function timeClicked(dd) {
+     reservedTime = getTimeObject(dd);
      $('#tijd').html(dd);
      checkContinue();
  }
+
+ function getTimeObject(slotTime) {
+     var parts = slotTime.split(":");
+     return {hours: parseInt(parts[0]), minutes: parseInt(parts[1])};
+ }
+
  function checkContinue() {
      if (calSelect > 0 && selectedSlot) {
          var ivs = $('#person_content').is(":visible");
@@ -383,15 +300,7 @@
      }
  }
 
- function infoForDayOfMonth(day) {
-     if (!blCalendar) return;
-     return blCalendar.dates[day];
- }
-
  function fillCalendar() {
-     //alert("filling dates");
-     // clear old
-//        tmeSelect = 0;
      $('#tijd').html("-");
      for (xx = 0; xx <= 41; xx++) {
          $('#dt' + xx).html("");
@@ -402,65 +311,48 @@
          $('#dt' + xx).removeClass("kvDisabled");
          $('#dt' + xx).removeClass("kvActive");
          $('#dt' + xx).removeClass("kvBlocked");
-         $('#dt' + xx).removeClass("kvWarning");
          $('#dt' + xx).addClass("kv");
      }
 
-     for (xx = 1; xx < 10; xx++) {
-         $('#slot' + xx).removeClass('kvtmSelected');
-         $('#slot' + xx).removeClass("isBlocked");
-         $('#slot' + xx).removeClass("isWarning");
-         $('#slot' + xx).addClass("isDisabled");
-     }
      $('#maandnaam').html(maanden[actMonth] + " " + actYear);
 
      dofs = dofsTable[firstMonthDay(actMonth, actYear)];
      for (xx = 1; xx <= daysInMonth(actMonth, actYear) ; xx++) {
          //
-         $('#dt' + (xx + dofs)).html(xx);
+         var node = $('#dt' + (xx + dofs));
+         node.html(xx);
          if (today[0] == actYear & today[1] == actMonth & today[2] == xx) {
-             $('#dt' + (xx + dofs)).addClass("kvActive");
+             node.addClass("kvActive");
          } else {
              if (actYear < today[0] | (actYear == today[0] & actMonth < today[1]) | ((actYear <= today[0] & actMonth <= today[1]) & xx < today[2])) {
-                 $('#dt' + (xx + dofs)).addClass("kvDisabled");
+                 node.addClass("kvDisabled");
              } else {
-                 $('#dt' + (xx + dofs)).addClass("kvFilled");
+                 node.addClass("kvFilled");
              }
          }
 
-         if (blCalendar.isClosed(xx-1)) {
-             $('#dt' + (xx + dofs)).removeClass("kvFilled");
-             $('#dt' + (xx + dofs)).addClass("kvDisabled");
+         if (availabilityInfo.isClosedOnDay(xx-1)) {
+             node.removeClass("kvFilled");
+             node.addClass("kvDisabled");
          }
          else {
-
+             if (availabilityInfo.isAvailableOnDay(xx-1, aantalPersonen)) {
+                 node.removeClass("kvBlocked");
+                 node.prop("title","");
+             }
+             else {
+                 node.removeClass("kvFilled");
+                 node.addClass("kvBlocked");
+                 node.prop("title","Volgeboekt");
+             }
          }
-
-//            var allClosed = 0;
-//            for (dayC = 0; dayC < blCalendar.result[(xx - 1)].available.length; dayC++) {
-//                if (blCalendar.result[(xx - 1)].available[dayC].isClosed) {
-//                    allClosed++;
-//                }
-//            }
-//            switch (allClosed) {
-//            case 9:
-//                $('#dt' + (xx + dofs)).removeClass("kvFilled");
-//                $('#dt' + (xx + dofs)).addClass("kvDisabled");
-//                break;
-//            default:
-//                var dagSeat = getSeatsTotal(xx - 1);
-//                if (dagSeat < dagSeatBlock) {
-//                    $('#dt' + (xx + dofs)).addClass("kvBlocked");
-//                } else if (dagSeat < dagSeatWarn) {
-//                    $('#dt' + (xx + dofs)).addClass("kvWarning");
-//                }
-//            }
      }
-
  }
+
  function pad2(number) {
      return (number < 10 ? '0' : '') + number
  }
+
  function verstuur() {
      if (fouten == false) {
          var dta = "Reservering:" + aantalPersonen + " personen, " + reservedDay[0] + "/" + pad2(reservedDay[1] + 1) + "/" + pad2(reservedDay[2]) + ", tijd:" + $('#tijd').html() + "\n";
@@ -470,37 +362,17 @@
          dta += "Telefoon:" + $('#tel').val() + "\n";
          dta += "Noot:" + $('#noot').val() + "\n";
 
-         var hours = 20;
-         var minutes = 0;
          nappkin.createNewReservation(
-                 new Date(reservedDay[0], reservedDay[1], reservedDay[2], hours, minutes),
-                 aantalPersonen,
-                 $('#nam').val(),
-                 $('#eml').val(),
-                 $('#tel').val(),
-                 $('#noot').val(),
-                 'nl',
-                 reserveResult
+             new Date(reservedDay[0], reservedDay[1], reservedDay[2], reservedTime.hours, reservedTime.minutes),
+             aantalPersonen,
+             $('#nam').val(),
+             $('#eml').val(),
+             $('#tel').val(),
+             $('#noot').val(),
+             'nl',
+             reserveResult
          );
 
-//            var reservationObject = {
-//                name:  $('#nam').val(),
-//                countGuests: aantalPersonen,
-//                startsOn: reservedDay[0] + "-" + pad2(reservedDay[1] + 1) + "-" + pad2(reservedDay[2]) + "T" + $('#tijd').html() + ":00",
-//                email: $('#eml').val(),
-//                notes: $('#noot').val(),
-//                mailingList: $('#infoaan').attr("checked"),
-//                phone: $('#tel').val(),
-//                locationId: locationId,
-//                localTime: true
-//            };
-//            $.ajax({
-//                type: 'POST',
-//                url: baseUrl + "reservation",
-//                data: JSON.stringify(reservationObject),
-//                success: reserveResult,
-//                contentType: 'application/json'
-//            });
      }
      return false;
  }
@@ -537,7 +409,7 @@
          if (!$('#infoaan').attr("checked")) {
              nwsUpd = " geen";
          }
-         $('#summary_content').append("<br><br>U wilt" + nwsUpd + " nieuws ontvangen over " + restaurant_name);
+         $('#summary_content').append("<br><br>U wilt" + nwsUpd + " nieuws ontvangen over " + locationName);
          $('#summary_content').append("<br><br><a href='index.html' target='_self' class='opnieuwlink'>Klik hier</a> als u een nieuwe reservering wilt maken");
 
      }
@@ -570,6 +442,7 @@
  }
 
  function klikPerson(pp) {
+     aantalPersonen = pp;
      enableDate();
      if (pp == 7) {
          $('#persons').html("groepsreservering/aanvraag");
@@ -584,7 +457,6 @@
      }
      $("#p" + pp).removeClass("inactief");
      $("#p" + pp).addClass("actief");
-     aantalPersonen = pp;
  }
 
  function getParameterByName(name) {
@@ -593,4 +465,4 @@
          results = regex.exec(location.search);
      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
  }
- });
+
