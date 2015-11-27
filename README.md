@@ -1,5 +1,5 @@
-# Algemeen
-Je kunt op verschillende manieren op je eigen website reserveringen aanmaken in Nappkin. 
+# Nappkin reserveringen
+Je kunt op verschillende manieren op je eigen website reserveringen aanmaken voor Nappkin. 
 
 Als je WordPress gebruikt kun je de Nappkin reserveer plugin installeren. Dat is de makkelijkste manier.
 
