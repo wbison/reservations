@@ -10,11 +10,11 @@ Als je je website in eigen beheer hebt en volledige controle wilt over het uiter
 # WordPress
 
 Installatie instructie:
-- installeer de plugin `amr shortcode any widget`
+- installeer de plugin `amr shortcode any widget` (https://nl.wordpress.org/plugins/amr-shortcode-any-widget/)
 Met deze plugin kun je widgets opnemen in een willekeurige pagina
-- maak een zip van WordPress/
+- comprimeer de inhoud van de map `WordPress/` tot `nappkin.zip`
 - kies in WordPress: `Add new plugin`
-- upload de eerder gemaakte zip
+- upload 'nappkin.zip`
 - ga naar `Appearance widgets`
 - sleep de Nappkin plugin naar het panel `Widgets for Shortcodes`
 - vul het id in dat je van Nappkin hebt ontvangen
