@@ -40,7 +40,7 @@ Het object `Nappkin` bevat twee functies:
 getAvailablityForMonth(date, success, failure);
 
 //  Aanmaken nieuwe reservering
-createNewReservation(date, pax, name, email, phone, notes, language, success, failure)
+createNewReservation(reservation, success, failure)
 ```
 
 ### getAvailablityForMonth()
@@ -94,7 +94,19 @@ Het veld `available` bevat het aantal beschikbare plaatsen in het betreffende ti
 
 ### createNewReservation()
 
-createNewReservation(date, pax, name, email, phone, notes, language, success, failure)
+createNewReservation(reservation, success, failure)
+
+```
+reservation = {
+    date: new Date(),
+    pax: 2,
+    name: "Jansen',
+    email: "email@domain.com",
+    phone: "06221123",
+    notes: "Graag bij het raam",
+    langauge: "nl"
+}
+```
 
 # Support
 Voor vragen en opmerkingen kan je contact opnemen met de servicedesk via `support@nappkin.nl`

@@ -68,7 +68,7 @@ var Nappkin = (function () {
             xhr.send();
         }
 
-        this.createNewReservation = function(date, pax, name, email, phone, notes, language, success, failure) {
+        this.createNewReservation = function(reservation, success, failure) {
 
             if (!failure) {
                 failure = function() {};
@@ -79,30 +79,40 @@ var Nappkin = (function () {
                 return;
             }
 
-            if (!date || date < new Date()) {
+            if (!reservation) {
+                failure("Missing reservation");
+                return;
+            }
+
+            if (!reservation.date || reservation.date < new Date()) {
                 failure("Invalid date");
                 return;
             }
 
-            if (!name) {
+            if (!reservation.name) {
                 failure("Missing name");
                 return;
             }
 
-            if (!pax || !parseInt(pax)) {
+            if (!reservation.email && !reservation.phone) {
+                failure("Missing email and phone");
+                return;
+            }
+
+            if (!reservation.pax || !parseInt(reservation.pax)) {
                 failure("Missing number of guests");
                 return;
             }
 
-            var reservation = {
-                name: name,
-                email: email,
-                phone: phone,
-                countGuests: parseInt(pax),
-                startsOn: date.getFullYear() + "-" + (date.getMonth()+1) + "-" + (date.getDate()) + "T" + date.toTimeString().substr(0, 8),
+            var r = {
+                name: reservation.name,
+                email: reservation.email,
+                phone: reservation.phone,
+                countGuests: parseInt(reservation.pax),
+                startsOn: reservation.date.getFullYear() + "-" + (reservation.date.getMonth()+1) + "-" + (reservation.date.getDate()) + "T" + reservation.date.toTimeString().substr(0, 8),
                 localTime: true,
-                notes: notes,
-                language: language || 'nl',
+                notes: reservation.notes,
+                language: reservation.language || 'nl',
                 source: 0,
                 locationId: this.locationId
             };
@@ -121,21 +131,8 @@ var Nappkin = (function () {
                     failure(xhr.status);
                 }
             };
-            xhr.send(JSON.stringify(reservation));
+            xhr.send(JSON.stringify(r));
         }
     }
     return Nappkin;
 })();
-
-
-//var nappkin = new Nappkin(193);
-//var date = new Date(2015, 9, 1);
-//var x = nappkin.getAvailabilityForMonth(date, function(data) {
-//    alert(data);
-//});
-//
-//var z = nappkin.createNewReservation(new Date(2015,9,17, 20), 2, "wim", "email@name.com", "06", "veggie", "nl", function(res) {
-//    alert(res);
-//}, function(err) {
-//    alert(err);
-//});

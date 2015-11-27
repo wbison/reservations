@@ -144,9 +144,7 @@
 	margin:0px 0px 0px 26px;
 	padding:10px 0 10px 0px;
 }
-*, * focus {
-	outline: none;
-}
+
 .tijdindex{
 	position:relative;
 	width:100px;
@@ -536,6 +534,7 @@
 
 .slot {
 	display: inline-block;
+	font-weight:bold;
 	/*background: #d9d9d9;*/
 	margin: 1px;
 	padding: 10px;

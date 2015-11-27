@@ -383,6 +383,12 @@ jQuery(function ($) {
         $('#tijd').html(dd);
         checkContinue();
     }
+
+    function getTimeObject(slotTime) {
+        var parts = slotTime.split(":");
+        return {hours: parseInt(parts[0]), minutes: parseInt(parts[1])};
+    }
+
     function checkContinue() {
         if (calSelect > 0 & tmeSelect > 0) {
             var ivs = $('#person_content').is(":visible");
@@ -493,9 +499,20 @@ jQuery(function ($) {
             dta += "Telefoon:" + $('#tel').val() + "\n";
             dta += "Noot:" + $('#noot').val() + "\n";
 
-            var hours = 20;
-            var minutes = 0;
+            var reservedTime = getTimeObject($('#tijd').html());
+
             var nappkin = new Nappkin(locationId);
+
+            var reservation = {
+                date: new Date(reservedDay[0], reservedDay[1], reservedDay[2], reservedTime.hours, reservedTime.minutes),
+                pax: aantalPersonen,
+                name: $('#nam').val(),
+                email: $('#eml').val(),
+                phone: $('#tel').val(),
+                notes: $('#noot').val(),
+                language: 'nl'
+            }
+
             nappkin.createNewReservation(
                 new Date(reservedDay[0], reservedDay[1], reservedDay[2], hours, minutes),
                 aantalPersonen,

@@ -82,6 +82,9 @@
      var date = new Date(actYear, actMonth, 1);
      nappkin.getAvailabilityForMonth(date, function(s) {
          availabilityInfo = s;
+         if (!availabilityInfo.maxGroupSize) {
+             availabilityInfo.maxGroupSize = 6;
+         }
          cBack(s)
      }, function(r) {
 
@@ -217,6 +220,10 @@
          }
          fillCalendar();
          setupDatum();
+     }
+     else {
+         // different number of guests
+         fillCalendar();
      }
  }
 
@@ -362,14 +369,17 @@
          dta += "Telefoon:" + $('#tel').val() + "\n";
          dta += "Noot:" + $('#noot').val() + "\n";
 
+         var reservation = {
+             date: new Date(reservedDay[0], reservedDay[1], reservedDay[2], reservedTime.hours, reservedTime.minutes),
+             pax: aantalPersonen,
+             name: $('#nam').val(),
+             email: $('#eml').val(),
+             phone: $('#tel').val(),
+             notes: $('#noot').val(),
+             language: 'nl'
+         }
          nappkin.createNewReservation(
-             new Date(reservedDay[0], reservedDay[1], reservedDay[2], reservedTime.hours, reservedTime.minutes),
-             aantalPersonen,
-             $('#nam').val(),
-             $('#eml').val(),
-             $('#tel').val(),
-             $('#noot').val(),
-             'nl',
+             reservation,
              reserveResult
          );
 
@@ -442,9 +452,7 @@
  }
 
  function klikPerson(pp) {
-     aantalPersonen = pp;
-     enableDate();
-     if (pp == 7) {
+     if (pp > availabilityInfo.maxGroupSize) {
          $('#persons').html("groepsreservering/aanvraag");
          $('#groepletop').slideDown("fast");
      } else {
@@ -457,12 +465,7 @@
      }
      $("#p" + pp).removeClass("inactief");
      $("#p" + pp).addClass("actief");
- }
 
- function getParameterByName(name) {
-     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-         results = regex.exec(location.search);
-     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+     aantalPersonen = pp;
+     enableDate();
  }
-
