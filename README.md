@@ -1,7 +1,7 @@
 # Nappkin reserveringen
 Je kunt op verschillende manieren op je eigen website reserveringen aanmaken voor Nappkin. 
 
-- De eenvoudigste manier is om een link op te nemen naar http://www.nappkin.nl/reserveren?id=XXX. Het juiste id krijg je van Nappkin.
+- De eenvoudigste manier is om een link op te nemen naar http://www.nappkin.nl/reserveren/?id=XXX. Het juiste id krijg je van Nappkin.
 
 - Als je WordPress gebruikt kun je de Nappkin reserveer plugin installeren.
 
