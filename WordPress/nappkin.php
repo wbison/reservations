@@ -221,7 +221,7 @@ class Nappkin extends WP_Widget {
                     <td>Telefoon:<br><input nam="tel" id="tel" type="text" class="txt_single"  tabindex="3" value=""></td>
                     </tr>
                   </table>
-                  <div style="padding:0 0 5px;"><input type="checkbox" name="infoaan" id="infoaan" value="0" tabindex="5">Ja, ik ontvang graag nieuws over restaurant Adam</div>
+                  <div style="padding:0 0 5px;"><input type="checkbox" name="infoaan" id="infoaan" value="0" tabindex="5">Ja, ik ontvang graag de nieuwsbrief</div>
 
                 <div name="subButton" id="subButton" class="verstuur_inactive"><div class="drop_verstuur_inactive" id='Div1' name='drop2'>&nbsp;</div><a href="#" name="verst" id="verst" class="verstuur_a" tabindex="6">VERSTUREN</a></div>
                 <div name="foutmsg" id="foutmsg" class="fout_msg">De gegevens zijn nog niet compleet</div>
