@@ -512,18 +512,10 @@ jQuery(function ($) {
                 notes: $('#noot').val(),
                 language: 'nl'
             }
-
             nappkin.createNewReservation(
-                new Date(reservedDay[0], reservedDay[1], reservedDay[2], hours, minutes),
-                aantalPersonen,
-                $('#nam').val(),
-                $('#eml').val(),
-                $('#tel').val(),
-                $('#noot').val(),
-                'nl',
+                reservation,
                 reserveResult
             );
-
         }
         return false;
     }
